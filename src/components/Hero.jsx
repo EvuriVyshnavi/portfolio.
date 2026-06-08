@@ -39,12 +39,10 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full min-h-screen flex flex-row flex-nowrap overflow-hidden"
+      className="w-full min-h-screen flex flex-col overflow-hidden"
     >
-      <div
-        style={{ backgroundColor: VIDEO_RED }}
-        className="w-1/2 flex items-center justify-center p-4 md:p-16 relative min-w-[40%]"
-      >
+      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-12">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-16 relative">
         <div
           className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl"
           style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
@@ -61,22 +59,19 @@ const Hero = () => {
           </p>
 
           <div data-aos="fade-up" data-aos-delay="240" className="flex flex-wrap items-center gap-4">
-            <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#F31113] px-6 py-3 text-sm font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1">
+            <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#F31113] px-6 py-3 text-base font-bold text-white shadow-lg transition duration-300 hover:-translate-y-1">
               View Projects
             </a>
-            <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/40 bg-transparent px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-1">
+            <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/40 bg-transparent px-6 py-3 text-base font-semibold text-white transition duration-300 hover:-translate-y-1">
               Contact
             </a>
           </div>
         </div>
       </div>
 
-      <div
-        style={{ backgroundColor: VIDEO_RED }}
-        className="w-1/2 relative flex items-center justify-center overflow-hidden group min-w-[40%]"
-      >
-        <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
-        <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-[95%] aspect-[4/3] md:aspect-[4/3] h-auto transition-transform duration-700 group-hover:scale-[1.01]">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-16 relative">
+          <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
+          <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-[520px] aspect-[4/3] rounded-[2rem] overflow-hidden transition-transform duration-700 group-hover:scale-[1.01]">
           <video
             ref={videoRef}
             loop
@@ -103,7 +98,8 @@ const Hero = () => {
           )}
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
