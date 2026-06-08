@@ -31,12 +31,6 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         
-        {/* Left Side: Logo/Name */}
-        <div className="flex items-center">
-          <a href="#home" className="text-white text-2xl font-black tracking-tight">
-              Vyshnavi
-          </a>
-        </div>
 
         {/* Center: Desktop Menu Links */}
         <div className="hidden md:flex space-x-8">

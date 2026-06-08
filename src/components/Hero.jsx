@@ -39,15 +39,15 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full min-h-screen flex flex-col overflow-hidden"
+      className="w-full min-h-[80vh] flex flex-col overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-12">
-        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-16 relative">
-        <div
-          className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl"
-          style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
-        />
-        <div className="max-w-xl w-full">
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-10">
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 relative">
+          <div
+            className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden md:block"
+            style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
+          />
+          <div className="max-w-xl w-full mx-auto md:mx-0">
           <h1 data-aos="fade-right" className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             <span className="block text-4xl md:text-5xl font-normal">Hi I'm</span>
             <span className="block">Vyshnavi</span>
@@ -69,9 +69,9 @@ const Hero = () => {
         </div>
       </div>
 
-        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-16 relative">
-          <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
-          <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-[520px] aspect-[4/3] rounded-[2rem] overflow-hidden transition-transform duration-700 group-hover:scale-[1.01]">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-0 relative">
+          <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out hidden md:block" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
+          <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/3] rounded-[2rem] overflow-hidden transition-transform duration-700 group-hover:scale-[1.01]">
           <video
             ref={videoRef}
             loop
