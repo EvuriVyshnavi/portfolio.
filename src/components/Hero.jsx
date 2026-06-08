@@ -13,7 +13,13 @@ const Hero = () => {
   const VIDEO_RED = '#F31113';
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
+    // CHANGE 1: AOS update chesa - offset + once false
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: 'ease-out',
+      offset: 150
+    });
 
     const handleMove = (event) => {
       setCursor({ x: event.clientX, y: event.clientY });
@@ -51,7 +57,8 @@ const Hero = () => {
       style={{ backgroundColor: VIDEO_RED }}
       className="w-full overflow-hidden"
     >
-      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center">
+      {/* CHANGE 2: min-h-[calc(100vh-64px)] add chesa + py-8 */}
+      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center min-h-[calc(100vh-64px)] lg:min-h-0 py-8 lg:py-0">
 
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-16 lg:py-20 relative order-2 lg:order-1">
           <div
