@@ -30,7 +30,7 @@ const Hero = () => {
     e.stopPropagation();
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.muted = false;
+        videoRef.current.muted = true;
         videoRef.current.play()
 .then(() => {
             setIsPlaying(true);
@@ -49,13 +49,13 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full overflow-hidden pt-16 lg:pt-20"
+      className="w-full overflow-hidden"
     >
-      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-stretch">
+      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center">
 
-        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-12 lg:py-20 relative order-2 lg:order-1">
+        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-16 lg:py-20 relative order-2 lg:order-1">
           <div
-            className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden lg:block"
+            className="pointer-events-none absolute -left-8 top-1/3 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden lg:block"
             style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
           />
           <div className="max-w-[560px] w-full">
@@ -79,69 +79,64 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-[600px] relative order-1 lg:order-2">
+        <div className="w-full lg:w-1/2 relative order-1 lg:order-2">
           <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl hidden lg:block" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
-          <video
-            ref={videoRef}
-            loop
-            playsInline
-            muted
-            poster={videoThumbnail}
-            className="w-full h-full object-cover"
-            style={{ backgroundColor: VIDEO_RED }}
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
 
-          {/* PULSE RING - BIGGER */}
-          {!isPlaying && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-6 lg:left-auto lg:right-6 lg:translate-x-0 lg:translate-y-0 pointer-events-none">
-              <div className="absolute inset-0 rounded-full bg-white/30 animate-ping"></div>
-            </div>
-          )}
+          <div className="relative w-full aspect-[3/4]">
+            <video
+              ref={videoRef}
+              loop
+              playsInline
+              muted
+              poster={videoThumbnail}
+              className="absolute inset-0 w-full h-full object-contain"
+              style={{ backgroundColor: VIDEO_RED }}
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
 
-          {/* MAIN BUTTON - SIZE INCREASED */}
-          <button
-            type="button"
-            onClick={handleVideoClick}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-6 lg:left-auto lg:right-6 lg:translate-x-0 lg:translate-y-0 w-20 h-20 lg:w-20 lg:h-20 rounded-full border-4 border-white bg-red-600 shadow-2xl shadow-black/50 flex justify-center items-center hover:scale-110 hover:bg-red-700 active:scale-95 transition-all duration-300 z-40 cursor-pointer"
-          >
-            {!isPlaying? (
-              <svg className="w-9 h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            ) : (
-              <svg className="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-              </svg>
-            )}
-          </button>
-
-          {/* LABEL - ALWAYS VISIBLE BEFORE PLAY */}
-          {!isPlaying && (
-            <>
-              {/* Mobile: Button kinda */}
-              <div className="lg:hidden absolute top-1/2 left-1/2 -translate-x-1/2 mt-14 z-40">
-                <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap animate-bounce">
-                  ▶ Watch Intro
+            <div className="absolute inset-0 pointer-events-none">
+              {/* PING EFFECT - MIDDLE RIGHT */}
+              {!isPlaying && (
+                <div className="absolute top-1/2 right-6 -translate-y-1/2">
+                  <div className="absolute inset-0 rounded-full bg-white/30 animate-ping"></div>
                 </div>
-              </div>
+              )}
 
-              {/* Desktop: Button pakkana */}
-              <div className="hidden lg:block absolute top-6 right-28 z-40">
-                <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap">
-                  ▶ Watch Intro
+              {/* PLAY/PAUSE BUTTON - MIDDLE RIGHT */}
+              <button
+                type="button"
+                onClick={handleVideoClick}
+                className="pointer-events-auto absolute top-1/2 -translate-y-1/2 right-6 w-20 h-20 rounded-full border-4 border-white bg-black/40 backdrop-blur-sm shadow-2xl shadow-black/50 flex justify-center items-center hover:scale-110 hover:bg-black/60 active:scale-95 transition-all duration-500 ease-in-out z-40 cursor-pointer"
+              >
+                {!isPlaying? (
+                  <svg className="w-9 h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                ) : (
+                  <svg className="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                  </svg>
+                )}
+              </button>
+
+              {/* WATCH INTRO - MIDDLE RIGHT */}
+              {!isPlaying && (
+                <div className="pointer-events-auto absolute top-1/2 right-6 mt-14 z-40">
+                  <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap animate-bounce">
+                    ▶ Watch Intro
+                  </div>
                 </div>
-              </div>
-            </>
-          )}
+              )}
 
-          {/* PAUSE HINT */}
-          {showHint && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-14 lg:top-28 lg:left-auto lg:right-6 lg:translate-x-0 lg:mt-0 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg">
-              Click to pause
+              {/* HINT - MIDDLE RIGHT */}
+              {showHint && (
+                <div className="pointer-events-auto absolute top-1/2 -translate-y-1/2 right-6 mt-14 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg transition-all duration-500">
+                  Click to pause
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>
