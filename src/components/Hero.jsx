@@ -53,15 +53,13 @@ const Hero = () => {
           />
           <div className="max-w-[560px] w-full">
             <h1 data-aos="fade-right" className="text-4xl lg:text-6xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-              <span className="block text-2xl lg:text-4xl font-normal">Hi I'm</span>
-              <span className="block">Vyshnavi</span>
-            </h1>
+            <span className="block">Data Speaks.</span>
+            <span className="block">I Translate.</span>
+          </h1>
 
-            <p data-aos="fade-right" data-aos-delay="120" className="text-white/90 text-sm lg:text-lg leading-relaxed mb-6">
-              I work with data to find patterns and build predictive models. 
-              I enjoy cleaning messy datasets, training machine learning models, and 
-              presenting insights through dashboards.
-            </p>
+<p data-aos="fade-right" data-aos-delay="120" className="text-white/90 text-sm lg:text-lg leading-relaxed mb-6">
+  ML Engineer crafting predictive models & dashboards from complex datasets.
+</p>
 
             <div data-aos="fade-up" data-aos-delay="240" className="flex items-center gap-3 lg:gap-4">
               <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-white text-red-600 px-5 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-bold shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-gray-100">
