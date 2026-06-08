@@ -25,11 +25,12 @@ const DesktopOnlyScreen = () => (
       </div>
       
       <h1 className="text-2xl font-bold mb-3">Desktop Mode Required</h1>
-      <h1>Desktop recommended for full features</h1>
       
       <p className="text-white/80 mb-6 text-sm leading-relaxed">
         Please enable "Desktop" or "Desktop site" and refresh the page to view this portfolio.
       </p>
+
+      <h1 className="text-2xl font-bold mb-3">Desktop recommended for full features</h1>
 
       <button 
         onClick={() => window.location.reload()}
