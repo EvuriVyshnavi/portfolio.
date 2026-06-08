@@ -13,21 +13,25 @@ const Hero = () => {
   const VIDEO_RED = '#F31113';
 
   useEffect(() => {
-    // Initialize AOS animations
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
 
-    // Track cursor for background blur effects
     const handleMove = (event) => {
       setCursor({ x: event.clientX, y: event.clientY });
     };
 
-    // Check if user is on mobile viewport
-    // If width < 1024px, show desktop site prompt
+    // Better mobile detection
     const checkViewport = () => {
-      setShowDesktopPrompt(window.innerWidth < 1024);
+      // Check if it's actually a mobile device
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Desktop site on cheste Chrome 980px isthadi, normal mobile 360-400px
+      // So if mobile device AND width < 980, show prompt
+      setShowDesktopPrompt(isMobileDevice && window.innerWidth < 980);
     };
     
-    checkViewport();
+    // Delay check to let browser resize after desktop mode
+    setTimeout(checkViewport, 100);
+    
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('resize', checkViewport);
     window.addEventListener('orientationchange', checkViewport);
@@ -52,7 +56,6 @@ const Hero = () => {
     }
   };
 
-  // Show black screen with instructions until user enables desktop site
   if (showDesktopPrompt) {
     return (
       <div className="fixed inset-0 z-[9999] w-screen h-screen bg-black flex items-center justify-center p-6">
@@ -63,29 +66,31 @@ const Hero = () => {
             </svg>
           </div>
           
-          <h1 className="text-2xl font-bold mb-3">Switch to Desktop View</h1>
+          <h1 className="text-2xl font-bold mb-3">Desktop Mode Required</h1>
           
           <p className="text-white/80 mb-6 text-sm leading-relaxed">
-            This portfolio is optimized for desktop. Please enable "Desktop site" in your browser menu to continue.
+            Please enable "Desktop site" and refresh the page to view this portfolio.
           </p>
 
           <div className="bg-white/5 border border-white/10 rounded-lg p-4 text-left text-xs">
             <p className="font-semibold mb-2 text-white/90">Chrome / Edge:</p>
-            <p className="text-white/60 mb-3">Tap ⋮ → Check "Desktop site"</p>
+            <p className="text-white/60 mb-3">Tap ⋮ → Check "Desktop site" → Refresh</p>
             
             <p className="font-semibold mb-2 text-white/90">Safari:</p>
-            <p className="text-white/60">Tap aA → "Request Desktop Website"</p>
+            <p className="text-white/60">Tap aA → "Request Desktop Website" → Refresh</p>
           </div>
 
-          <p className="text-xs text-white/40 mt-6">
-            Page will load automatically after switching
-          </p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-6 px-6 py-2 bg-white/10 rounded-full text-sm font-semibold hover:bg-white/20 transition"
+          >
+            Refresh Page
+          </button>
         </div>
       </div>
     );
   }
 
-  // Main Hero section - renders only when desktop site is enabled
   return (
     <section
       id="home"
