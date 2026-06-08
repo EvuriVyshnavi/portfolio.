@@ -30,14 +30,8 @@ const DesktopOnlyScreen = () => (
         Please enable "Desktop" or "Desktop site" and refresh the page to view this portfolio.
       </p>
 
-      <h1 className="text-2xl font-bold mb-3">Desktop recommended for full features</h1>
+      <h2 className="text-2xl font-bold mb-3">Desktop recommended for full features</h2>
 
-      <button 
-        onClick={() => window.location.reload()}
-        className="px-6 py-2 bg-white/10 rounded-full text-sm font-semibold hover:bg-white/20 transition"
-      >
-        Refresh Page
-      </button>
     </div>
   </div>
 )
