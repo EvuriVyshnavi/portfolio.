@@ -46,7 +46,6 @@ const Hero = () => {
     >
       <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-stretch">
         
-        {/* Left Section - Text Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-12 lg:py-20 relative order-2 lg:order-1">
           <div
             className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden lg:block"
@@ -75,7 +74,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Section - Video */}
         <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-[600px] relative order-1 lg:order-2">
           <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl hidden lg:block" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
           <video
