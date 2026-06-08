@@ -32,12 +32,12 @@ const Hero = () => {
       if (videoRef.current.paused) {
         videoRef.current.muted = false;
         videoRef.current.play()
-        .then(() => {
+      .then(() => {
             setIsPlaying(true);
             setShowHint(true);
             setTimeout(() => setShowHint(false), 2500);
           })
-        .catch(err => console.log('Video play error:', err));
+      .catch(err => console.log('Video play error:', err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -49,7 +49,7 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full overflow-hidden"
+      className="w-full overflow-hidden pt-16 lg:pt-20"
     >
       <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-stretch">
 
@@ -93,25 +93,25 @@ const Hero = () => {
             <source src={heroVideo} type="video/mp4" />
           </video>
 
-          {/* FIX: Mobile = top-6, Desktop = top-20 */}
+          {/* SOLID RED BUTTON - SIZE INCREASED */}
           <button
             type="button"
             onClick={handleVideoClick}
-            className="absolute top-6 right-4 md:top-8 lg:top-20 lg:right-6 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/60 bg-black/40 backdrop-blur-md flex justify-center items-center hover:scale-110 hover:bg-black/60 transition-all duration-300 z-50 cursor-pointer"
+            className="absolute top-4 right-4 lg:top-6 lg:right-6 w-14 h-14 lg:w-16 lg:h-16 rounded-full border-4 border-white bg-red-600 shadow-2xl shadow-black/50 flex justify-center items-center hover:scale-110 hover:bg-red-700 active:scale-95 transition-all duration-300 z-40 cursor-pointer"
           >
             {!isPlaying? (
-              <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             ) : (
-              <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
               </svg>
             )}
           </button>
 
           {showHint && (
-            <div className="absolute top-20 right-4 md:top-24 lg:top-36 lg:right-6 bg-black/70 text-white text-xs px-3 py-1.5 rounded-md z-50">
+            <div className="absolute top-20 right-4 lg:top-24 lg:right-6 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg">
               Click to pause
             </div>
           )}
