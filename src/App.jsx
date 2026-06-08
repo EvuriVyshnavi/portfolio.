@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -16,29 +15,6 @@ const SectionDivider = () => (
 )
 
 function App() {
-  const [showDesktopPrompt, setShowDesktopPrompt] = useState(false)
-
-  useEffect(() => {
-    const checkViewport = () => {
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      setShowDesktopPrompt(isMobileDevice && window.innerWidth < 980)
-    }
-    
-    setTimeout(checkViewport, 100)
-    window.addEventListener('resize', checkViewport)
-    window.addEventListener('orientationchange', checkViewport)
-    
-    return () => {
-      window.removeEventListener('resize', checkViewport)
-      window.removeEventListener('orientationchange', checkViewport)
-    }
-  }, [])
-
-  // Desktop prompt unte site motham render cheyoddu. Hero lone prompt untadi
-  if (showDesktopPrompt) {
-    return <Hero />
-  }
-
   return (
     <>
       <Preloader />
