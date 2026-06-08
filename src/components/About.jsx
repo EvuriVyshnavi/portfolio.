@@ -47,10 +47,10 @@ const About = () => {
   presenting insights through dashboards.
           </p>
 
-          <div className="grid grid-cols-3 gap-0 mt-4justify-center items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 justify-center items-center">
             {skillIcons.map((skill, index) => (
               <div key={index} data-aos="zoom-in" data-aos-delay={80 + index * 80} className="flex items-center justify-center">
-                <img src={skill.src} alt="" className="h-28 w-28 md:h-32 md:w-32 object-contain" />
+                <img src={skill.src} alt="" className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain" />
               </div>
             ))}
           </div>

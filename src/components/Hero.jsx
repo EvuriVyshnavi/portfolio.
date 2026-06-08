@@ -43,7 +43,7 @@ const Hero = () => {
     >
       <div
         style={{ backgroundColor: VIDEO_RED }}
-        className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-6 md:p-16 relative"
+        className="w-full md:w-1/2 min-h-full flex items-center justify-center p-6 md:p-16 relative"
       >
         <div
           className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl"
@@ -73,7 +73,7 @@ const Hero = () => {
 
       <div
         style={{ backgroundColor: VIDEO_RED }}
-        className="w-full md:w-1/2 min-h-screen relative flex items-center justify-center overflow-hidden group"
+        className="w-full md:w-1/2 min-h-full relative flex items-center justify-center overflow-hidden group"
       >
         <div className="pointer-events-none absolute -right-12 bottom-10 h-36 w-36 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
         <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full h-full transition-transform duration-700 group-hover:scale-[1.01]">
