@@ -56,16 +56,17 @@ const Hero = () => {
       style={{ backgroundColor: VIDEO_RED }}
       className="w-full overflow-hidden"
     >
-      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center min-h-[calc(100vh-64px)] lg:min-h-0 py-8 lg:py-0">
+      {/* CHANGE 1: min-h teesesam, pb-12 add chesam */}
+      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center pb-12 lg:pb-0 lg:min-h-0">
 
-        {/* TEXT SECTION - MOBILE FONT SIZE + SPACING FIX */}
-        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-8 lg:py-20 relative order-2 lg:order-1">
+        {/* TEXT SECTION */}
+        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 pt-8 pb-4 lg:py-20 relative order-2 lg:order-1">
           <div
             className="pointer-events-none absolute -left-8 top-1/3 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden lg:block"
             style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
           />
           <div className="max-w-[560px] w-full">
-            <h1 data-aos="fade-right" className="text-5xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 lg:mb-6 leading-tight">
+            <h1 data-aos="fade-right" className="text-5xl lg:text-6xl font-bold text-white mb-5 lg:mb-6 leading-tight">
               <span className="block">Data Speaks.</span>
               <span className="block">I Translate.</span>
             </h1>
