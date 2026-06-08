@@ -8,6 +8,7 @@ const Hero = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [showHint, setShowHint] = useState(false);
 
   const VIDEO_RED = '#F31113';
 
@@ -17,20 +18,26 @@ const Hero = () => {
     const handleMove = (event) => {
       setCursor({ x: event.clientX, y: event.clientY });
     };
-    
+
     window.addEventListener('mousemove', handleMove);
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMove);
     };
   }, []);
 
-  const handleVideoClick = () => {
+  const handleVideoClick = (e) => {
+    e.stopPropagation(); // FIX 1: Parent click events ni stop chey
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.muted = false;
-        videoRef.current.play();
-        setIsPlaying(true);
+        videoRef.current.play()
+         .then(() => {
+            setIsPlaying(true);
+            setShowHint(true);
+            setTimeout(() => setShowHint(false), 2500);
+          })
+         .catch(err => console.log('Video play error:', err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -45,7 +52,7 @@ const Hero = () => {
       className="w-full overflow-hidden"
     >
       <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-stretch">
-        
+
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-12 lg:py-20 relative order-2 lg:order-1">
           <div
             className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden lg:block"
@@ -78,24 +85,34 @@ const Hero = () => {
             ref={videoRef}
             loop
             playsInline
+            muted
             poster={videoThumbnail}
-            className="w-full h-full object-cover cursor-pointer"
+            className="w-full h-full object-cover"
             style={{ backgroundColor: VIDEO_RED }}
-            onClick={handleVideoClick}
           >
             <source src={heroVideo} type="video/mp4" />
           </video>
 
-          {!isPlaying && (
-            <div
-              className="absolute inset-0 flex items-center justify-center cursor-pointer"
-              onClick={handleVideoClick}
-            >
-              <div className="w-14 h-14 lg:w-24 lg:h-24 rounded-full border-2 border-white/50 bg-black/25 backdrop-blur-md flex justify-center items-center hover:scale-105 hover:bg-white/30 transition duration-300">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
+          {/* FIX 2: type="button" + z-50 + top-16 for navbar */}
+          <button
+            type="button"
+            onClick={handleVideoClick}
+            className="absolute top-16 right-4 lg:top-20 lg:right-6 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/60 bg-black/40 backdrop-blur-md flex justify-center items-center hover:scale-110 hover:bg-black/60 transition-all duration-300 z-50 cursor-pointer"
+          >
+            {!isPlaying? (
+              <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+            )}
+          </button>
+
+          {showHint && (
+            <div className="absolute top-32 right-4 lg:top-36 lg:right-6 bg-black/70 text-white text-xs px-3 py-1.5 rounded-md z-50">
+              Click to pause
             </div>
           )}
         </div>
