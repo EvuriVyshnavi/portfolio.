@@ -19,19 +19,12 @@ const Hero = () => {
       setCursor({ x: event.clientX, y: event.clientY });
     };
 
-    // Better mobile detection
     const checkViewport = () => {
-      // Check if it's actually a mobile device
       const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      // Desktop site on cheste Chrome 980px isthadi, normal mobile 360-400px
-      // So if mobile device AND width < 980, show prompt
       setShowDesktopPrompt(isMobileDevice && window.innerWidth < 980);
     };
     
-    // Delay check to let browser resize after desktop mode
     setTimeout(checkViewport, 100);
-    
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('resize', checkViewport);
     window.addEventListener('orientationchange', checkViewport);
@@ -58,7 +51,7 @@ const Hero = () => {
 
   if (showDesktopPrompt) {
     return (
-      <div className="fixed inset-0 z-[9999] w-screen h-screen bg-black flex items-center justify-center p-6">
+      <div className="fixed inset-0 z-50 w-screen h-screen bg-black flex items-center justify-center p-6">
         <div className="max-w-sm text-center text-white">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,42 +88,43 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full min-h-screen overflow-hidden"
+      className="w-full overflow-hidden"
     >
-      <div className="w-full max-w-screen-2xl mx-auto flex items-stretch">
+      {/* min-h-[70vh] - full screen kanna chinna, kani video ki saripada height */}
+      <div className="w-full max-w-screen-2xl mx-auto min-h-[70vh] flex flex-col md:flex-row items-stretch">
         
-        {/* Left Section - Text Content 50% */}
-        <div className="w-1/2 flex flex-col items-start justify-center px-12 py-16 relative">
+        {/* Left Section - Text Content */}
+        <div className="w-full md:w-1/2 flex flex-col items-start justify-center px-6 md:px-8 lg:px-12 py-12 md:py-16 relative">
           <div
-            className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl"
+            className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl hidden md:block"
             style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
           />
           <div className="max-w-[560px] w-full">
-            <h1 data-aos="fade-right" className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              <span className="block text-3xl md:text-5xl font-normal">Hi I'm</span>
+            <h1 data-aos="fade-right" className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 lg:mb-6 leading-tight">
+              <span className="block text-xl md:text-3xl lg:text-4xl font-normal">Hi I'm</span>
               <span className="block">Vyshnavi</span>
             </h1>
 
-            <p data-aos="fade-right" data-aos-delay="120" className="text-white/90 text-lg leading-relaxed mb-6">
+            <p data-aos="fade-right" data-aos-delay="120" className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed mb-6">
               I work with data to find patterns and build predictive models. 
               I enjoy cleaning messy datasets, training machine learning models, and 
               presenting insights through dashboards.
             </p>
 
-            <div data-aos="fade-up" data-aos-delay="240" className="flex items-center gap-4">
-              <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-white text-red-600 px-6 py-3 text-base font-bold shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-gray-100">
+            <div data-aos="fade-up" data-aos-delay="240" className="flex items-center gap-3 lg:gap-4">
+              <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-white text-red-600 px-5 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-bold shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-gray-100">
                 View Projects
               </a>
-              <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/40 bg-transparent px-6 py-3 text-base font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/10">
+              <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/40 bg-transparent px-5 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/10">
                 Contact
               </a>
             </div>
           </div>
         </div>
 
-        {/* Right Section - Video 50% */}
-        <div className="w-1/2 min-h-screen relative">
-          <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
+        {/* Right Section - Video. items-stretch valla full height teeskuntadi */}
+        <div className="w-full md:w-1/2 relative">
+          <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl hidden md:block" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
           <video
             ref={videoRef}
             loop
@@ -148,8 +142,8 @@ const Hero = () => {
               className="absolute inset-0 flex items-center justify-center cursor-pointer"
               onClick={handleVideoClick}
             >
-              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border-2 border-white/50 bg-black/25 backdrop-blur-md flex justify-center items-center hover:scale-105 hover:bg-white/30 transition duration-300">
-                <svg className="w-6 h-6 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 border-white/50 bg-black/25 backdrop-blur-md flex justify-center items-center hover:scale-105 hover:bg-white/30 transition duration-300">
+                <svg className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
