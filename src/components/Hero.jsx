@@ -62,16 +62,8 @@ const Hero = () => {
           <h1 className="text-2xl font-bold mb-3">Desktop Mode Required</h1>
           
           <p className="text-white/80 mb-6 text-sm leading-relaxed">
-            Please enable "Desktop site" and refresh the page to view this portfolio.
+            Please enable "Desktop" or "Desktop site" and refresh the page to view this portfolio.
           </p>
-
-          <div className="bg-white/5 border border-white/10 rounded-lg p-4 text-left text-xs">
-            <p className="font-semibold mb-2 text-white/90">Chrome / Edge:</p>
-            <p className="text-white/60 mb-3">Tap ⋮ → Check "Desktop site" → Refresh</p>
-            
-            <p className="font-semibold mb-2 text-white/90">Safari:</p>
-            <p className="text-white/60">Tap aA → "Request Desktop Website" → Refresh</p>
-          </div>
 
           <button 
             onClick={() => window.location.reload()}
