@@ -27,17 +27,17 @@ const Hero = () => {
   }, []);
 
   const handleVideoClick = (e) => {
-    e.stopPropagation(); // FIX 1: Parent click events ni stop chey
+    e.stopPropagation();
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.muted = false;
         videoRef.current.play()
-         .then(() => {
+        .then(() => {
             setIsPlaying(true);
             setShowHint(true);
             setTimeout(() => setShowHint(false), 2500);
           })
-         .catch(err => console.log('Video play error:', err));
+        .catch(err => console.log('Video play error:', err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -93,11 +93,11 @@ const Hero = () => {
             <source src={heroVideo} type="video/mp4" />
           </video>
 
-          {/* FIX 2: type="button" + z-50 + top-16 for navbar */}
+          {/* FIX: Mobile = top-6, Desktop = top-20 */}
           <button
             type="button"
             onClick={handleVideoClick}
-            className="absolute top-16 right-4 lg:top-20 lg:right-6 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/60 bg-black/40 backdrop-blur-md flex justify-center items-center hover:scale-110 hover:bg-black/60 transition-all duration-300 z-50 cursor-pointer"
+            className="absolute top-6 right-4 md:top-8 lg:top-20 lg:right-6 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/60 bg-black/40 backdrop-blur-md flex justify-center items-center hover:scale-110 hover:bg-black/60 transition-all duration-300 z-50 cursor-pointer"
           >
             {!isPlaying? (
               <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@ const Hero = () => {
           </button>
 
           {showHint && (
-            <div className="absolute top-32 right-4 lg:top-36 lg:right-6 bg-black/70 text-white text-xs px-3 py-1.5 rounded-md z-50">
+            <div className="absolute top-20 right-4 md:top-24 lg:top-36 lg:right-6 bg-black/70 text-white text-xs px-3 py-1.5 rounded-md z-50">
               Click to pause
             </div>
           )}
