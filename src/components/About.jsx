@@ -13,10 +13,10 @@ const About = () => {
 
   return (
     <section id="about" className="bg-[#ff2a2a] pt-20 pb-40 px-6 md:px-12 w-full relative overflow-hidden font-sans">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-start">
+      <div className="max-w-6xl mx-auto flex flex-row flex-nowrap gap-8 items-start justify-center">
         
         {/* Left Side: ID Badge and Skills */}
-        <div className="flex flex-col items-center w-full md:w-[350px] shrink-0 mt-12 md:mt-0">
+        <div className="flex flex-col items-center w-[40%] min-w-[220px] shrink-0 mt-12 md:mt-0">
           
           <div data-aos="zoom-in" data-aos-delay="120" className="relative flex justify-center w-full">
             <div className="absolute -top-32 left-1/2 w-3 h-40 bg-black transform -translate-x-1/2 shadow-inner z-0"></div>
@@ -38,7 +38,7 @@ const About = () => {
 
         </div>
 
-        <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
+        <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20 min-w-[45%]">
           
           <h2 className="text-4xl md:text-5xl font-black text-black mb-4">About</h2>
           <p className="text-lg font-bold mb-6 leading-relaxed max-w-3xl text-red-50">

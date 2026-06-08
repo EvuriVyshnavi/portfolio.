@@ -39,11 +39,11 @@ const Hero = () => {
     <section
       id="home"
       style={{ backgroundColor: VIDEO_RED }}
-      className="w-full min-h-[90vh] flex flex-col md:flex-row overflow-hidden"
+      className="w-full min-h-screen flex flex-row flex-nowrap overflow-hidden"
     >
       <div
         style={{ backgroundColor: VIDEO_RED }}
-        className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-16 relative"
+        className="w-1/2 flex items-center justify-center p-4 md:p-16 relative min-w-[40%]"
       >
         <div
           className="pointer-events-none absolute -left-8 top-16 h-36 w-36 rounded-full bg-white/10 blur-3xl"
@@ -73,10 +73,10 @@ const Hero = () => {
 
       <div
         style={{ backgroundColor: VIDEO_RED }}
-        className="w-full md:w-1/2 relative flex items-center justify-center overflow-hidden group"
+        className="w-1/2 relative flex items-center justify-center overflow-hidden group min-w-[40%]"
       >
-        <div className="pointer-events-none absolute -right-12 bottom-10 h-36 w-36 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
-        <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-3xl aspect-[4/3] md:aspect-auto h-auto md:h-full transition-transform duration-700 group-hover:scale-[1.01]">
+        <div className="pointer-events-none absolute -right-12 bottom-10 h-24 w-24 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 ease-out" style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }} />
+        <div data-aos="zoom-in" data-aos-delay="300" className="relative w-full max-w-[95%] aspect-[4/3] md:aspect-[4/3] h-auto transition-transform duration-700 group-hover:scale-[1.01]">
           <video
             ref={videoRef}
             loop
