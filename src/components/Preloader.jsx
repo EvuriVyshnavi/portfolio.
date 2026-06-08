@@ -32,7 +32,7 @@ const Preloader = () => {
           >
             {/* Background text (empty state) */}
             <div className="text-red-900/30">
-              Vyshnavi<span className="text-red-900/30">.</span>
+              VYSHNAVI'S PORTFOLIO<span className="text-red-900/30"></span>
             </div>
 
             {/* Foreground text (water fill state) */}
@@ -43,7 +43,7 @@ const Preloader = () => {
               style={{ WebkitClipPath: 'inset(100% 0 0 0)' }}
               transition={{ duration: 1.6, ease: "easeInOut", delay: 0.2 }}
             >
-              Vyshnavi<span className="text-black">.</span>
+              VYSHNAVI'S PORTFOLIO<span className="text-black"></span>
             </motion.div>
           </motion.div>
 
