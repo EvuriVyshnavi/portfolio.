@@ -32,12 +32,12 @@ const Hero = () => {
       if (videoRef.current.paused) {
         videoRef.current.muted = false;
         videoRef.current.play()
-      .then(() => {
+.then(() => {
             setIsPlaying(true);
             setShowHint(true);
             setTimeout(() => setShowHint(false), 2500);
           })
-      .catch(err => console.log('Video play error:', err));
+.catch(err => console.log('Video play error:', err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -93,25 +93,52 @@ const Hero = () => {
             <source src={heroVideo} type="video/mp4" />
           </video>
 
-          {/* SOLID RED BUTTON - SIZE INCREASED */}
+          {/* PULSE RING - BIGGER */}
+          {!isPlaying && (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-6 lg:left-auto lg:right-6 lg:translate-x-0 lg:translate-y-0 pointer-events-none">
+              <div className="absolute inset-0 rounded-full bg-white/30 animate-ping"></div>
+            </div>
+          )}
+
+          {/* MAIN BUTTON - SIZE INCREASED */}
           <button
             type="button"
             onClick={handleVideoClick}
-            className="absolute top-4 right-4 lg:top-6 lg:right-6 w-14 h-14 lg:w-16 lg:h-16 rounded-full border-4 border-white bg-red-600 shadow-2xl shadow-black/50 flex justify-center items-center hover:scale-110 hover:bg-red-700 active:scale-95 transition-all duration-300 z-40 cursor-pointer"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-6 lg:left-auto lg:right-6 lg:translate-x-0 lg:translate-y-0 w-20 h-20 lg:w-20 lg:h-20 rounded-full border-4 border-white bg-red-600 shadow-2xl shadow-black/50 flex justify-center items-center hover:scale-110 hover:bg-red-700 active:scale-95 transition-all duration-300 z-40 cursor-pointer"
           >
             {!isPlaying? (
-              <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             ) : (
-              <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
               </svg>
             )}
           </button>
 
+          {/* LABEL - ALWAYS VISIBLE BEFORE PLAY */}
+          {!isPlaying && (
+            <>
+              {/* Mobile: Button kinda */}
+              <div className="lg:hidden absolute top-1/2 left-1/2 -translate-x-1/2 mt-14 z-40">
+                <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap animate-bounce">
+                  ▶ Watch Intro
+                </div>
+              </div>
+
+              {/* Desktop: Button pakkana */}
+              <div className="hidden lg:block absolute top-6 right-28 z-40">
+                <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap">
+                  ▶ Watch Intro
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* PAUSE HINT */}
           {showHint && (
-            <div className="absolute top-20 right-4 lg:top-24 lg:right-6 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-14 lg:top-28 lg:left-auto lg:right-6 lg:translate-x-0 lg:mt-0 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg">
               Click to pause
             </div>
           )}
