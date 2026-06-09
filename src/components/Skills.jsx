@@ -1,4 +1,4 @@
-const Services = () => {
+const Skills = () => {
   const technical = [
     { name: 'C', icon: 'code' },
     { name: 'Python', icon: 'snake' },
@@ -225,4 +225,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Skills;

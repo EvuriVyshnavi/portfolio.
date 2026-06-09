@@ -12,7 +12,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = ['Home', 'About', 'Services', 'Projects', 'Contact']; // Skills → Services chesa
+  const navLinks = ['Home', 'About', 'Skills', 'Projects', 'Work', 'Contact'];
 
   return (
     <nav
