@@ -31,30 +31,30 @@ function App() {
     <>
       <Preloader />
       <Navbar />
-      <main className="overflow-x-hidden">
+      <main className="overflow-x-hidden min-h-[100dvh] pb-24">
         <Hero />
-        
+
         <div id="about">
           <About />
         </div>
-        
+
         <div id="services">
           <Services />
         </div>
-        
+
         <SectionDivider />
-        
+
         <div id="projects">
           <Projects />
         </div>
-        
+
         <SectionDivider />
-        
+
         <div id="work">
           <WorkExperience />
         </div>
-        
-        <div id="contact">
+
+        <div id="contact" className="pb-[env(safe-area-inset-bottom)]">
           <Contact />
         </div>
       </main>
