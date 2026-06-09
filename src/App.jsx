@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -16,18 +18,46 @@ const SectionDivider = () => (
 )
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: 'ease-out',
+      offset: 120
+    });
+  }, []);
+
   return (
     <>
       <Preloader />
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <SectionDivider />
-      <Projects />
-      <SectionDivider />
-      <WorkExperience />
-      <Contact />
+      <main className="overflow-x-hidden">
+        <Hero />
+        
+        <div id="about">
+          <About />
+        </div>
+        
+        <div id="services">
+          <Services />
+        </div>
+        
+        <SectionDivider />
+        
+        <div id="projects">
+          <Projects />
+        </div>
+        
+        <SectionDivider />
+        
+        <div id="work">
+          <WorkExperience />
+        </div>
+        
+        <div id="contact">
+          <Contact />
+        </div>
+      </main>
       <Footer />
     </>
   )

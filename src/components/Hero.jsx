@@ -7,7 +7,7 @@ import videoThumbnail from '../assets/hero video/thumbnail.jpg';
 const Hero = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true); // ← Mobile voice kosam add chesam
+  const [isMuted, setIsMuted] = useState(true);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [showHint, setShowHint] = useState(false);
 
@@ -36,15 +36,15 @@ const Hero = () => {
     e.stopPropagation();
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.muted = false; // ← User click cheste unmute
+        videoRef.current.muted = false;
         setIsMuted(false);
         videoRef.current.play()
-         .then(() => {
+        .then(() => {
             setIsPlaying(true);
             setShowHint(true);
             setTimeout(() => setShowHint(false), 2500);
           })
-         .catch(err => console.log('Video play error:', err));
+        .catch(err => console.log('Video play error:', err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -58,7 +58,7 @@ const Hero = () => {
       style={{ backgroundColor: VIDEO_RED }}
       className="w-full overflow-hidden"
     >
-      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center min-h-[calc(100vh-64px)] lg:min-h-0 py-8 lg:py-0">
+      <div className="w-full max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center min-h-screen lg:min-h-0 py-20 lg:py-0">
 
         {/* TEXT SECTION */}
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-6 lg:px-12 py-8 lg:py-20 relative order-2 lg:order-1">
@@ -67,7 +67,7 @@ const Hero = () => {
             style={{ transform: `translate(${cursor.x * 0.02}px, ${cursor.y * 0.02}px)` }}
           />
           <div className="max-w-[560px] w-full">
-            <h1 data-aos="fade-right" className="text-5xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 lg:mb-6 leading-tight">
+            <h1 data-aos="fade-right" className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 lg:mb-6 leading-tight">
               <span className="block">Data Speaks.</span>
               <span className="block">I Translate.</span>
             </h1>
@@ -96,7 +96,7 @@ const Hero = () => {
               ref={videoRef}
               loop
               playsInline
-              muted={isMuted} // ← Dynamic muted. First load muted, click cheste unmute
+              muted={isMuted}
               poster={videoThumbnail}
               className="absolute inset-0 w-full h-full object-contain"
               style={{ backgroundColor: VIDEO_RED }}
@@ -105,14 +105,12 @@ const Hero = () => {
             </video>
 
             <div className="absolute inset-0 pointer-events-none">
-              {/* PING EFFECT */}
               {!isPlaying && (
                 <div className="absolute top-1/2 right-6 -translate-y-1/2">
                   <div className="absolute inset-0 rounded-full bg-white/30 animate-ping"></div>
                 </div>
               )}
 
-              {/* PLAY/PAUSE BUTTON */}
               <button
                 type="button"
                 onClick={handleVideoClick}
@@ -129,7 +127,6 @@ const Hero = () => {
                 )}
               </button>
 
-              {/* WATCH INTRO */}
               {!isPlaying && (
                 <div className="pointer-events-auto absolute top-1/2 right-6 mt-14 z-40">
                   <div className="bg-white text-red-600 font-bold text-base px-6 py-2.5 rounded-full shadow-xl whitespace-nowrap animate-bounce">
@@ -138,7 +135,6 @@ const Hero = () => {
                 </div>
               )}
 
-              {/* HINT */}
               {showHint && (
                 <div className="pointer-events-auto absolute top-1/2 -translate-y-1/2 right-6 mt-14 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md z-40 shadow-lg transition-all duration-500">
                   Click to pause

@@ -19,6 +19,10 @@
 
 .hero {
   position: relative;
+  min-height: 100vh; // Mobile lo full screen kosam add chesam
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .base,
   .framework,
@@ -54,6 +58,12 @@
     transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
       scale(0.8);
   }
+
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    padding-top: 80px; // Navbar height kosam
+    padding-bottom: 40px;
+  }
 }
 
 #center {
@@ -63,10 +73,13 @@
   place-content: center;
   place-items: center;
   flex-grow: 1;
+  min-height: 100vh; // Section full screen
 
   @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
+    padding: 100px 20px 40px; // Top padding navbar kosam
     gap: 18px;
+    min-height: 100vh;
+    justify-content: flex-start; // Mobile lo top nunchi start
   }
 }
 
@@ -74,6 +87,7 @@
   display: flex;
   border-top: 1px solid var(--border);
   text-align: left;
+  min-height: auto; // Footer laga unte full height avasaram ledu
 
   & > div {
     flex: 1 1 0;
@@ -180,5 +194,22 @@
   &::after {
     right: 0;
     border-right-color: var(--border);
+  }
+}
+
+// Global mobile fixes
+@media (max-width: 768px) {
+  section {
+    min-height: 100vh !important;
+    padding-top: 80px !important; // Navbar overlap kakunda
+  }
+  
+  // Video/image paiki text kinda ravali ante
+  .flex-col-mobile {
+    flex-direction: column !important;
+  }
+  
+  .order-1-mobile {
+    order: -1 !important;
   }
 }
