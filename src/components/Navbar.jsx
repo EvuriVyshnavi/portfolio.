@@ -12,7 +12,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = ['Home', 'About', 'Skills', 'Projects', 'Work', 'Contact'];
+  const navLinks = ['Home', 'About', 'Skills', 'Projects', 'Work'];
 
   return (
     <nav
